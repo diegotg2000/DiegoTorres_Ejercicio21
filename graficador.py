@@ -2,11 +2,11 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 
-os.system('g++ generador.cpp -o  ejercicio.x')
+os.system('g++ DiegoTorres_Ejercicio22.cpp -o  ejercicio.x')
 os.system("./ejercicio.x > datos.dat")
 
-data = np.loadtxt("datos.dat")
+datos = np.loadtxt("datos.dat", usecols=0)
 
-plt.figure()
-plt.plot(data[:,0], data[:,1])
-plt.savefig("datos.png")
+x=np.linspace(-3,3)
+_=plt.hist(datos, bins=100, density=True)
+plt.plot(x, np.exp(-x*x/2)/np.sqrt(2*np.pi))
